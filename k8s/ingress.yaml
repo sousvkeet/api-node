@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: mysvk.local
+  - host: pay.tryandtest.site
     http:
       paths:
       # Route /api traffic to the backend API service
