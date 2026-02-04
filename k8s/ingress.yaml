@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: payment-ingress
+  namespace: dev
+  annotations:
+    # NGINX Ingress Controller annotation
+    kubernetes.io/ingress.class: nginx
+    # Rewrite rules if needed (e.g. for /api path stripping)
+    # nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - host: mysvk.local
+    http:
+      paths:
+      # Route /api traffic to the backend API service
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: payment-api
+            port:
+              number: 80
+      # Route everything else to the frontend app
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: payment-app
+            port:
+              number: 80
