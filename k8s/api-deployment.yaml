@@ -28,3 +28,18 @@ spec:
         # Add DB connection string override if needed
         # - name: ConnectionStrings__DevConnection
         #   value: "Your Connection String Here"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-api
+  namespace: dev
+spec:
+  selector:
+    app: payment-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: ClusterIP
