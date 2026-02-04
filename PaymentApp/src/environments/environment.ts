@@ -1,3 +1,3 @@
 export const environment = {
-  apiBaseUrl: 'http://localhost:5000/api'
+  apiBaseUrl: 'http://pay.tryandtest.site/api'
 };
